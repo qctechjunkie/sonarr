@@ -1,0 +1,18 @@
+# Sonarr - TV Series Collection Manager
+# Automatically searches, downloads, and manages your TV show collection
+
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${CONFIG_PATH}:/config
+      - ${TV_PATH}:/tv
+      - ${DOWNLOADS_PATH}:/downloads
+    ports:
+      - "${SONARR_PORT}:8989"
+    restart: ${RESTART_POLICY}
