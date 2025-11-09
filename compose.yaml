@@ -16,3 +16,9 @@ services:
     ports:
       - "${SONARR_PORT}:8989"
     restart: ${RESTART_POLICY}
+    networks:
+      - arrnetwork
+
+networks:
+  arrnetwork:
+    external: true
